@@ -1,11 +1,13 @@
 import { Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Home from './pages/Home.jsx'
 import CreatePost from './pages/CreatePost.jsx'
 import Header from './components/Header/Header.jsx'
 import CartSidebar from './components/CartSideBar/CartSidebar.jsx'
 import { posts as initialPosts } from './data/posts'; // i use name export for posts.js
 import Toast from './components/Toast/Toast.jsx'
+import BackToTop from './components/BackToTop/BackToTop.jsx'
+import Preloader from './components/Preloader/Preloader.jsx'
 
 const App = () => {
   const [posts, setPosts] = useState(initialPosts);
@@ -13,6 +15,46 @@ const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
   const [isToastVisible, setIsToastVisible] = useState(false);
+  const [backToTop, setBackToTop] = useState(false);
+  const [preloader, setPreloader] = useState(true);
+
+  useEffect( () => {
+    // preload
+/*    const handleLoad = () => {
+      setPreloader(false);
+    }
+    const onPreloader = () => {
+      if(document.readyState === 'complete') {
+        handleLoad();
+      }
+      else {
+        window.addEventListener('load', handleLoad);
+      }
+    } */
+
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 2000); // simulate loading
+
+    //Back to top function
+    const handleScroll = () => {
+      if(window.scrollY > 100) {
+        setBackToTop(true);
+      }
+      else {
+        setBackToTop(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      /*removeEventListener('load', handleLoad);*/
+      clearTimeout(timer)
+      removeEventListener('scroll', handleScroll);
+    };
+  },[]);
+  
 
   //Toast function
   const showToast = (message) => {
@@ -58,6 +100,8 @@ const App = () => {
 
   return (
   <>
+    {preloader && <Preloader />}
+
     <Header 
       cartCount={cartCount}
       onCartToggle={() => setIsCartOpen(!isCartOpen)}
@@ -74,6 +118,9 @@ const App = () => {
     <Toast
       message={toastMessage}
       isVisble={isToastVisible}
+    />
+    <BackToTop 
+      backToTop={backToTop}
     />
 
     <Routes>

@@ -1,7 +1,7 @@
 .header {
     background: var(--bg-primary);
     border-bottom: 1px solid var(--border);
-    padding: .3rem 0;
+    padding: .5rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -9,9 +9,8 @@
 }
 
 .header img {
-  width: 5rem;
-  margin-left: 0rem;
-    
+  width: 4rem;
+  margin-left: 0rem;    
 }
 
 .header-content {
