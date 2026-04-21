@@ -6,7 +6,6 @@ import Header from './components/Header/Header.jsx'
 import CartSidebar from './components/CartSideBar/CartSidebar.jsx'
 import { posts as initialPosts } from './data/posts'; // i use name export for posts.js
 import Toast from './components/Toast/Toast.jsx'
-import BackToTop from './components/BackToTop/BackToTop.jsx'
 import Preloader from './components/Preloader/Preloader.jsx'
 
 const App = () => {
@@ -15,7 +14,6 @@ const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
   const [isToastVisible, setIsToastVisible] = useState(false);
-  const [backToTop, setBackToTop] = useState(false);
   const [preloader, setPreloader] = useState(true);
 
   useEffect( () => {
@@ -33,25 +31,12 @@ const App = () => {
     } */
 
       const timer = setTimeout(() => {
-        setLoading(false);
+        setPreloader(false);
       }, 2000); // simulate loading
-
-    //Back to top function
-    const handleScroll = () => {
-      if(window.scrollY > 100) {
-        setBackToTop(true);
-      }
-      else {
-        setBackToTop(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
 
     return () => {
       /*removeEventListener('load', handleLoad);*/
       clearTimeout(timer)
-      removeEventListener('scroll', handleScroll);
     };
   },[]);
   
@@ -118,9 +103,6 @@ const App = () => {
     <Toast
       message={toastMessage}
       isVisble={isToastVisible}
-    />
-    <BackToTop 
-      backToTop={backToTop}
     />
 
     <Routes>
