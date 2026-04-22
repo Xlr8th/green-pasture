@@ -19,7 +19,7 @@ const Header = ({ cartCount, onCartToggle }) => {
           <nav className="nav">
 
               <Link to="/">Home</Link>
-              <Link to="/create">Create Post</Link>
+              <Link to="/subscribe">Subscribe</Link>
               <button className="cart-btn" onClick={onCartToggle}>
                   🛒 Cart (<span>{cartCount}</span>)
               </button>

@@ -1,12 +1,12 @@
-import { Routes, Route } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import Home from './pages/Home.jsx'
-import CreatePost from './pages/CreatePost.jsx'
-import Header from './components/Header/Header.jsx'
-import CartSidebar from './components/CartSideBar/CartSidebar.jsx'
-import { posts as initialPosts } from './data/posts'; // i use name export for posts.js
-import Toast from './components/Toast/Toast.jsx'
-import Preloader from './components/Preloader/Preloader.jsx'
+import { Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import Home from './pages/Home.jsx';
+import Subscribe from './pages/Subscribe.jsx';
+import Header from './components/Header/Header.jsx';
+import CartSidebar from './components/CartSideBar/CartSidebar.jsx';
+import { posts as initialPosts } from './data/posts';
+import Toast from './components/Toast/Toast.jsx';
+import Preloader from './components/Preloader/Preloader.jsx';
 
 const App = () => {
   const [posts, setPosts] = useState(initialPosts);
@@ -112,7 +112,7 @@ const App = () => {
       showToast={showToast}
       />} 
       />
-      <Route path="/create" element={<CreatePost />} />
+      <Route path="/subscribe" element={<Subscribe />} />
     </Routes>
   </>
   )    
