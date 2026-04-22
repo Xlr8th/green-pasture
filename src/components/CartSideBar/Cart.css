@@ -31,7 +31,7 @@
 .close-btn {
     background: none;
     border: none;
-    font-size: 2rem;
+    font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-secondary);
     line-height: 1;
@@ -163,4 +163,12 @@
 
 .checkout-btn:hover {
     background: var(--primary-dark);
+}
+
+@media (max-width: 768px) {
+    .cart-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+    
 }

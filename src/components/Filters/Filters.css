@@ -94,3 +94,18 @@
     border-color: var(--primary);
     color: white;
 }
+
+@media (max-width: 768px) {
+    .filters .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-buttons {
+        justify-content: center;
+    }
+    
+    .sort-container {
+        justify-content: center;
+    }
+}

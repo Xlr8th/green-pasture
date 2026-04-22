@@ -4,7 +4,6 @@ import Hero from "../components/Hero/Hero";
 import PostsGrid from "../components/PostCard/PostsGrid";
 import StatsBar from "../components/Stats/StatsBar";
 import PostModal from "../components/PostModal/PostModal";
-import BackToTop from '../components/BackToTop/BackToTop'
 
 const Home = ({onAddToCart, posts, showToast}) => {
     //states
@@ -14,25 +13,6 @@ const Home = ({onAddToCart, posts, showToast}) => {
     const [currentSubCategory, setCurrentSubCategory] = useState('all');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedPost, setSelectedPost] = useState(null);
-    const [backToTop, setBackToTop] = useState(false);
-
-  /*useEffect( () => {  
-      //Back to top function
-      const handleScroll = () => {
-        if(window.scrollY > 100) {
-          setBackToTop(true);
-        }
-        else {
-          setBackToTop(false);
-        }
-      };
-      window.addEventListener('scroll', handleScroll);
-      handleScroll();
-  
-      return () => {
-        removeEventListener('scroll', handleScroll);
-      };
-    },[]);*/
 
 
     const getPostByCategory = (currentFilter, posts) => currentFilter === 'all' ? posts : posts.filter(post => post.category === currentFilter);
@@ -115,8 +95,12 @@ const Home = ({onAddToCart, posts, showToast}) => {
 
     return (
         <>
-            <BackToTop
-                backToTop={backToTop}
+            
+            <PostModal
+                post={selectedPost}
+                isOpen={isModalOpen}
+                onClose={closePost}
+                onAddToCart={onAddToCart}
             />
             
             <Hero 
@@ -137,12 +121,6 @@ const Home = ({onAddToCart, posts, showToast}) => {
             <PostsGrid 
                 posts={filteredPosts}
                 onViewPost={openPost}
-                onAddToCart={onAddToCart}
-            />
-            <PostModal
-                post={selectedPost}
-                isOpen={isModalOpen}
-                onClose={closePost}
                 onAddToCart={onAddToCart}
             />
         </>

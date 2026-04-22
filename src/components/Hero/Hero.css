@@ -79,3 +79,13 @@
 #search-input:focus {
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
 }
+
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+}

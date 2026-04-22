@@ -240,3 +240,10 @@
     font-weight: 700;
     text-transform: uppercase;
 }
+
+@media (max-width: 768px) {    
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+}
